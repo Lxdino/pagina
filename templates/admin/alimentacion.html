@@ -1,0 +1,97 @@
+{% include 'admin/cabecera.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = 'utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Tasa_Metabolica</title>
+    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"-->
+
+</head> 
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <br>
+                <div class="card">
+            <div class="card-header">
+                Tasa Metabolica Basal
+            </div>
+            <div class="card-body">
+                        <form action="/admin/tasa/aceptar" method="post" enctype="multipart/form-data">
+
+                            <div class="mb-3">
+                                <label for="txtAltura" class="form-label">Altura</label>
+                                <input type="number" class="form-control" name="txtAltura" id="txtAltura"
+                                    aria-describedby="helpId" placeholder="Escriba su altura en cm, ej: 175">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="txtPeso" class="form-label">Peso</label>
+                                <input type="number" class="form-control" name="txtPeso" id="txtPeso"
+                                    aria-describedby="helpId" placeholder="Escriba su peso en kg, ej: 90">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="txtEdad" class="form-label">Edad</label>
+                                <input type="number" class="form-control" name="txtEdad" id="txtEdad"
+                                    aria-describedby="helpId" placeholder="Escriba su edad, ej: 24">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="txtCalorico" class="form-label">Gasto Calorico</label>
+                                <input type="number" step="0.01" class="form-control" name="txtCalorico" id="txtCalorico"
+                                    aria-describedby="helpId" placeholder="1.25 - 1.55 - 1.75">
+                            </div>
+                            <p>☞Sedentario (poco o nada de ejercicio): 1.25<br> ☞Moderadamente activo (entrenamiento 4-5 días / semana): 1.55<br>☞Muy activo (entrenamiento 6-7 días / semana): 1.75</p>
+
+                            <button type="submit" class="btn btn-success">Aceptar</button>
+                            
+                    
+                        </form>
+
+                    </div>
+                    <div class="card-footer text-muted">
+
+                    </div>
+                </div>
+            </div>
+        
+                    <div class="col-md-7">
+                    <div class="table-responsive">
+                        <table class="table table-primary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Calorias de Mantenimiento</th>
+                                    <th scope="col">Deficit</th>
+                                    <th scope="col">Superávit</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{mantenimiento}}</td>
+                                    <td>{{deficit}}</td>
+                                    <td>{{superavit}}</td>
+                                </tr>
+                            <tbody>
+                        </table>
+                        <form action="/admin/dieta/mantenimiento" method="post" enctype=multipart/form style ="display: inline-block;">
+                            <button type="submit" class="btn btn-success"> Generar dieta Mantenimiento</button>
+                        </form>
+                        <form action="/admin/dieta/deficit" method="post" enctype=multipart/form style ="display: inline-block;">
+                            <button type="submit" class="btn btn-success"> Generar dieta Deficit</button>
+                        </form>
+                        <form action="/admin/dieta/superavit" method="post" enctype=multipart/form style ="display: inline-block;">
+                            <button type="submit" class="btn btn-success"> Generar dieta Superavit</button>
+                        </form>
+                        <p style="font-size: 1.1em; color: white;">☞La alimentación se demora un poco al cargar, ya que la genera una IA (inteligencia artificial), diseñada para hacer dietas con el fin deportivo, está diseñada para generar 4 comidas al día y dar 2gr de proteína por kilogramo de peso de la persona.</p>
+                        
+        </div>
+    </div>
+
+
+</body>
+</html>
